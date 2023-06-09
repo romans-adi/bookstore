@@ -1,0 +1,58 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+
+const AddBook = ({ onAddBook }) => {
+  const [inputValue, setInputValue] = useState('');
+  const [selectedAuthor, setSelectedAuthor] = useState('');
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleCategoryChange = (e) => {
+    setSelectedAuthor(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (inputValue.trim() !== '' && selectedAuthor.trim() !== '') {
+      const newBook = {
+        title: inputValue,
+        category: 'Thriller',
+        author: selectedAuthor,
+      };
+      onAddBook(newBook);
+      setInputValue('');
+      setSelectedAuthor('');
+    }
+  };
+
+  return (
+    <div className="add-book">
+      <h3 className="add-book-heading">Add New Book</h3>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={handleInputChange}
+          placeholder="Book title"
+        />
+        <select value={selectedAuthor} onChange={handleCategoryChange}>
+          <option value="">Select an author</option>
+          <option value="John Doe">John Doe</option>
+          <option value="John Noakes"> John Noakes</option>
+          <option value="Richard Miles">Richard Miles</option>
+          <option value="Mary Major">Mary Major</option>
+        </select>
+        <button type="submit">Add Book</button>
+      </form>
+    </div>
+  );
+};
+
+AddBook.propTypes = {
+  onAddBook: PropTypes.func.isRequired,
+};
+
+export default AddBook;
