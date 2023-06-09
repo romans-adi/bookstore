@@ -1,0 +1,18 @@
+.categories {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100vw;
+  z-index: 0;
+
+  h1 {
+    margin: 10px 0;
+  }
+
+  p {
+    font-size: 24px;
+  }
+}
