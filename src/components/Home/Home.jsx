@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AddBook from './AddBook';
+import RemoveBook from './RemoveBook';
 import './Home.scss';
 
 const Home = () => {
@@ -18,20 +19,33 @@ const Home = () => {
     setBooks([...books, bookWithId]);
   };
 
+  const handleRemoveBook = (bookId) => {
+    setBooks(books.filter((book) => book.id !== bookId));
+  };
+
   return (
     <div id="home">
+      {books.map((book) => (
+        <div key={book.id} className="book-card">
+          <ul>
+            <li className="book-category">{book.category}</li>
+            <li className="book-title">{book.title}</li>
+            <li className="book-author">{book.author}</li>
+            <li>
+              <div>
+                <ul className="actions">
+                  <li>Comments</li>
+                  <li>
+                    <RemoveBook bookId={book.id} onRemoveBook={handleRemoveBook} />
+                  </li>
+                  <li>Edit</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      ))}
       <AddBook onAddBook={handleAddBook} />
-      <ul>
-        {books.map((book) => (
-          <li key={book.id}>
-            {book.title}
-            {' '}
-            - Category:
-            {' '}
-            {book.category}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 };

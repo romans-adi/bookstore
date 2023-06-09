@@ -4,47 +4,50 @@ import React, { useState } from 'react';
 
 const AddBook = ({ onAddBook }) => {
   const [inputValue, setInputValue] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedAuthor, setSelectedAuthor] = useState('');
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
 
   const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
+    setSelectedAuthor(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (inputValue.trim() !== '' && selectedCategory.trim() !== '') {
+    if (inputValue.trim() !== '' && selectedAuthor.trim() !== '') {
       const newBook = {
         title: inputValue,
-        category: selectedCategory,
+        category: 'Thriller',
+        author: selectedAuthor,
       };
       onAddBook(newBook);
       setInputValue('');
-      setSelectedCategory('');
+      setSelectedAuthor('');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={handleInputChange}
-        placeholder="Enter a book"
-      />
-      <select value={selectedCategory} onChange={handleCategoryChange}>
-        <option value="">Select a category</option>
-        <option value="Fantasy">Fantasy</option>
-        <option value="Science Fiction">Science Fiction</option>
-        <option value="Mystery">Mystery</option>
-        <option value="Romance">Romance</option>
-        <option value="Thriller">Thriller</option>
-      </select>
-      <button type="submit">Add Book</button>
-    </form>
+    <div className="add-book">
+      <h3 className="add-book-heading">Add New Book</h3>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={handleInputChange}
+          placeholder="Book title"
+        />
+        <select value={selectedAuthor} onChange={handleCategoryChange}>
+          <option value="">Select an author</option>
+          <option value="John Doe">John Doe</option>
+          <option value="John Noakes"> John Noakes</option>
+          <option value="Richard Miles">Richard Miles</option>
+          <option value="Mary Major">Mary Major</option>
+        </select>
+        <button type="submit">Add Book</button>
+      </form>
+    </div>
   );
 };
 

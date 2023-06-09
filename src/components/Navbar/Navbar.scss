@@ -1,4 +1,7 @@
+@import '../../fonts';
+
 nav {
+  font-family: 'Montserrat', sans-serif;
   position: fixed;
   top: 0;
   display: flex;
@@ -14,7 +17,6 @@ nav {
     width: 15rem;
     height: 2.313rem;
     margin: 0.375rem 2.938rem 0.125rem 0;
-    font-family: 'Montserrat', sans-serif;
     font-size: 1.875rem;
     font-weight: bold;
     color: #0290ff;
@@ -24,12 +26,19 @@ nav {
     list-style: none;
     display: flex;
     flex: 1;
-    gap: 10%;
-    font-family: "Montserrat", sans-serif;
+    gap: 5%;
     font-size: 0.813rem;
     padding-top: 0.27rem;
     letter-spacing: 1.9px;
     color: #121212;
+
+    li {
+      opacity: 0.5;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 
   .profile {
@@ -37,6 +46,19 @@ nav {
     height: 2.813rem;
     border-radius: 50%;
     border: solid 1px #e8e8e8;
-    place-self: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    padding: 3%;
+    margin: 0;
+    min-height: 100px;
+    align-items: flex-start;
+
+    .profile {
+      display: none;
+    }
   }
 }
