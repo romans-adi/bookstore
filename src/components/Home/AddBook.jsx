@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const AddBook = ({ onAddBook }) => {
   const [inputValue, setInputValue] = useState('');
   const [selectedAuthor, setSelectedAuthor] = useState('');
-  const categories = ['Thriller', 'Mystery', 'Detective', 'Neo-Noir', 'Science Fiction'];
+  const categories = ['Thriller', 'Mystery', 'Detective', 'Neo-Noir', 'Science Fiction', 'Fiction', 'Nonfiction'];
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);

@@ -1,34 +1,55 @@
-import React, { useState } from 'react';
+import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useSelector, useDispatch } from 'react-redux';
 import AddBook from './AddBook';
+import store from '../../redux/store';
 import RemoveBook from './RemoveBook';
+import { addBook, removeBook, selectCategory } from '../../redux/books/booksSlice';
+import selectBooksByCategory from '../../redux/books/bookSelectors';
 import './Home.scss';
 
 const Home = () => {
-  const [books, setBooks] = useState([]);
+  const dispatch = useDispatch();
+  const books = useSelector(selectBooksByCategory);
 
-  const generateRandomKey = () => {
-    const randomNumber = Math.floor(Math.random() * 1000000);
-    if (books.some((book) => book.id === randomNumber)) {
-      return generateRandomKey();
-    }
-    return randomNumber;
+  const generateId = () => {
+    const lastBook = books[books.length - 1];
+    const lastItemId = lastBook ? parseInt(lastBook.item_id.slice(4), 10) : 0;
+    const newItemId = lastItemId + 1;
+    return `item${newItemId}`;
   };
 
   const handleAddBook = (newBook) => {
-    const bookWithId = { ...newBook, id: generateRandomKey() };
-    setBooks([...books, bookWithId]);
+    const book = {
+      item_id: generateId(),
+      title: newBook.title,
+      author: newBook.author,
+      category: newBook.category,
+    };
+    dispatch(addBook(book));
   };
 
-  const handleRemoveBook = (bookId) => {
-    setBooks(books.filter((book) => book.id !== bookId));
+  const handleRemoveBook = (itemId) => {
+    dispatch(removeBook(itemId));
+  };
+
+  const handleSelectCategory = (category) => {
+    const { selectedCategory } = store.getState().books;
+    if (selectedCategory === category) {
+      dispatch(selectCategory(null));
+    } else {
+      dispatch(selectCategory(category));
+    }
   };
 
   return (
     <div id="home">
       {books.map((book) => (
-        <div key={book.id} className="book-card">
+        <div key={book.item_id} className="book-card">
           <ul>
-            <li className="book-category">{book.category}</li>
+            <button type="button" className="book-category" onClick={() => handleSelectCategory(book.category)}>
+              {book.category}
+            </button>
             <li className="book-title">{book.title}</li>
             <li className="book-author">{book.author}</li>
             <li>
@@ -36,7 +57,7 @@ const Home = () => {
                 <ul className="actions">
                   <li>Comments</li>
                   <li>
-                    <RemoveBook bookId={book.id} onRemoveBook={handleRemoveBook} />
+                    <RemoveBook itemId={book.item_id} onRemoveBook={handleRemoveBook} />
                   </li>
                   <li>Edit</li>
                 </ul>

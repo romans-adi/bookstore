@@ -2,9 +2,9 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 
-const RemoveBook = ({ bookId, onRemoveBook }) => {
+const RemoveBook = ({ itemId, onRemoveBook }) => {
   const handleRemove = () => {
-    onRemoveBook(bookId);
+    onRemoveBook(itemId);
   };
 
   return (
@@ -14,7 +14,7 @@ const RemoveBook = ({ bookId, onRemoveBook }) => {
 
 RemoveBook.propTypes = {
   onRemoveBook: PropTypes.func.isRequired,
-  bookId: PropTypes.number.isRequired,
+  itemId: PropTypes.string.isRequired,
 };
 
 export default RemoveBook;
