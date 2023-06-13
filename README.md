@@ -13,6 +13,7 @@
   - [:rocket: Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
+    - [Install](#install)
     - [Setup](#setup)
     - [Usage](#usage)
     - [Deployment](#deployment)
@@ -83,6 +84,10 @@ In order to run this project you need:
 
 Clone the project using a terminal on your local machine. After successful cloning you can open it in any text editor of your choice.
 You can also run this project using CLI. Make sure you have node package manager installed on your machine, and then run 'npm start' to start this app in your default browser.
+
+### Install
+
+To install node.js for this project, please, run the command 'npm install'
 
 ### Setup
 
