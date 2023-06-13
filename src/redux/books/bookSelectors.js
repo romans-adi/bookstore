@@ -1,9 +1,9 @@
 const selectBooksByCategory = (state) => {
-  const { selectedCategory } = state.books;
+  const { selectedCategory, allBooks } = state.books;
   if (!selectedCategory) {
-    return state.books.books;
+    return allBooks;
   }
-  return state.books.books.filter((book) => book.category === selectedCategory);
+  return allBooks.filter((book) => book.category === selectedCategory);
 };
 
 export default selectBooksByCategory;

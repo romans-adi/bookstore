@@ -12,13 +12,10 @@ const booksSlice = createSlice({
   reducers: {
     addBook: (state, action) => {
       state.allBooks.push(action.payload);
-      state.selectBooksByCategory.push(action.payload);
     },
     removeBook: (state, action) => {
       const bookId = action.payload;
       state.allBooks = state.allBooks.filter((book) => book.id !== bookId);
-      // eslint-disable-next-line max-len
-      state.selectBooksByCategory = state.selectBooksByCategory.filter((book) => book.id !== bookId);
     },
     selectCategory: (state, action) => {
       state.selectedCategory = action.payload;
