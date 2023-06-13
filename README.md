@@ -13,6 +13,7 @@
   - [:rocket: Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
+    - [Install](#install)
     - [Setup](#setup)
     - [Usage](#usage)
     - [Deployment](#deployment)
@@ -79,6 +80,8 @@ To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
+To run this project, you need to have Node.js installed on your machine. Node.js comes bundled with npm (Node Package Manager), which will handle the installation of project dependencies.
+
 In order to run this project you need:
 
 Clone the project using a terminal on your local machine. After successful cloning you can open it in any text editor of your choice.
@@ -104,11 +107,19 @@ You can also create the new directory just adding the name of it in the end of c
 
 > git clone https://github.com/romans-adi/bookstore.git bookstore
 
+### Install
+
+Run the following command to install the project dependencies:
+
+> npm install
+
 ### Usage
 
 To run the project, execute the following command:
 
 > npm start
+
+### Testing
 
 To run tests, execute the following command:
 

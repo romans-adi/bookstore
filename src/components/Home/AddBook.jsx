@@ -1,10 +1,10 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
 const AddBook = ({ onAddBook }) => {
   const [inputValue, setInputValue] = useState('');
   const [selectedAuthor, setSelectedAuthor] = useState('');
+  const categories = ['Thriller', 'Mystery', 'Detective', 'Neo-Noir', 'Science Fiction'];
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -17,9 +17,10 @@ const AddBook = ({ onAddBook }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputValue.trim() !== '' && selectedAuthor.trim() !== '') {
+      const randomCategory = categories[Math.floor(Math.random() * categories.length)];
       const newBook = {
         title: inputValue,
-        category: 'Thriller',
+        category: randomCategory,
         author: selectedAuthor,
       };
       onAddBook(newBook);
