@@ -1,19 +1,17 @@
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useSelector, useDispatch } from 'react-redux';
 import AddBook from './AddBook';
-import store from '../../redux/store';
 import RemoveBook from './RemoveBook';
 import { addBook, removeBook, selectCategory } from '../../redux/books/booksSlice';
-import selectBooksByCategory from '../../redux/books/bookSelectors';
 import './Home.scss';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const books = useSelector(selectBooksByCategory);
+  const allBooks = useSelector((state) => state.books.allBooks);
+  const selectedCategory = useSelector((state) => state.books.selectedCategory);
 
   const generateId = () => {
-    const lastBook = books[books.length - 1];
+    const lastBook = allBooks[allBooks.length - 1];
     const lastItemId = lastBook ? parseInt(lastBook.item_id.slice(4), 10) : 0;
     const newItemId = lastItemId + 1;
     return `item${newItemId}`;
@@ -34,7 +32,6 @@ const Home = () => {
   };
 
   const handleSelectCategory = (category) => {
-    const { selectedCategory } = store.getState().books;
     if (selectedCategory === category) {
       dispatch(selectCategory(null));
     } else {
@@ -42,9 +39,13 @@ const Home = () => {
     }
   };
 
+  const filteredBooks = selectedCategory
+    ? allBooks.filter((book) => book.category === selectedCategory)
+    : allBooks;
+
   return (
     <div id="home">
-      {books.map((book) => (
+      {filteredBooks.map((book) => (
         <div key={book.item_id} className="book-card">
           <ul>
             <button type="button" className="book-category" onClick={() => handleSelectCategory(book.category)}>
