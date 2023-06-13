@@ -35,6 +35,7 @@ The Bookstore project is a website that allows users to view, add, and remove bo
 
   <ul>
      <li><a href="https://react.dev/">React</a></li>
+      <li><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></li>
       <li><a href="https://www.javascript.com/">JavaScript</a></li>
       <li><a href="https://sass-lang.com/">SCSS</a></li>
       <li><a href="https://www.w3.org/Style/CSS/Overview.en.html">CSS</a></li>
@@ -48,6 +49,7 @@ The Bookstore project is a website that allows users to view, add, and remove bo
 
 - [x] Reusable Components
 - [x] Client-side routing
+- [x] Redux Toolkit
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -56,21 +58,17 @@ The Bookstore project is a website that allows users to view, add, and remove bo
 ### Future Features <a name="future-features"></a>
 
 - [ ] Implement API calls
-- [ ] Integrate Redux
-- [ ] Educational Resources: Provide tutorials, articles, or videos to support users' learning.
 - [ ] Enhance the visual appeal and user experience
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LIVE DEMO
+<!-- LIVE DEMO -->
 
 ## :rocket: Live Demo <a name="live-demo"></a>
 
-- [Here is a Live Demo of this project]()
+- [Here is a Live Demo of this project](https://bookstore-cms-owyj.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
--->
 
 <!-- GETTING STARTED -->
 
@@ -127,7 +125,7 @@ To run tests, execute the following command:
 
 ### Deployment
 
-This project is planned to be deployed using Render Cloud:
+This project is deployed using Render Cloud:
 
 - [Render Cloud](https://render.com/)
 
