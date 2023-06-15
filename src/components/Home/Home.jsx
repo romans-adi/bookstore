@@ -1,34 +1,43 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { PacmanLoader } from 'react-spinners';
+import { v4 as uuidv4 } from 'uuid';
 import AddBook from './AddBook';
-import RemoveBook from './RemoveBook';
-import { addBook, removeBook, selectCategory } from '../../redux/books/booksSlice';
+import BookItem from './BookItem';
+import {
+  selectCategory,
+  fetchBooks,
+  removeBook,
+  addBook,
+} from '../../redux/books/booksSlice';
 import './Home.scss';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const allBooks = useSelector((state) => state.books.allBooks);
+  const books = useSelector((state) => state.books.books);
   const selectedCategory = useSelector((state) => state.books.selectedCategory);
+  const status = useSelector((state) => state.books.status);
+  const error = useSelector((state) => state.books.error);
 
-  const generateId = () => {
-    const lastBook = allBooks[allBooks.length - 1];
-    const lastItemId = lastBook ? parseInt(lastBook.item_id.slice(4), 10) : 0;
-    const newItemId = lastItemId + 1;
-    return `item${newItemId}`;
-  };
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
 
   const handleAddBook = (newBook) => {
     const book = {
-      item_id: generateId(),
-      title: newBook.title,
-      author: newBook.author,
-      category: newBook.category,
+      id: uuidv4(),
+      title: newBook.title.trim(),
+      author: newBook.author.trim(),
+      category: newBook.category.trim(),
     };
-    dispatch(addBook(book));
+
+    if (book.title && book.author && book.category) {
+      dispatch(addBook(book));
+    }
   };
 
-  const handleRemoveBook = (itemId) => {
-    dispatch(removeBook(itemId));
+  const handleRemoveBook = (bookId) => {
+    dispatch(removeBook(bookId));
   };
 
   const handleSelectCategory = (category) => {
@@ -39,34 +48,39 @@ const Home = () => {
     }
   };
 
-  const filteredBooks = selectedCategory
-    ? allBooks.filter((book) => book.category === selectedCategory)
-    : allBooks;
+  if (status === 'loading') {
+    return (
+      <div className="spinner-container">
+        <PacmanLoader color="#123abc" />
+      </div>
+    );
+  }
 
   return (
     <div id="home">
-      {filteredBooks.map((book) => (
-        <div key={book.item_id} className="book-card">
-          <ul>
-            <button type="button" className="book-category" onClick={() => handleSelectCategory(book.category)}>
-              {book.category}
-            </button>
-            <li className="book-title">{book.title}</li>
-            <li className="book-author">{book.author}</li>
-            <li>
-              <div>
-                <ul className="actions">
-                  <li>Comments</li>
-                  <li>
-                    <RemoveBook itemId={book.item_id} onRemoveBook={handleRemoveBook} />
-                  </li>
-                  <li>Edit</li>
-                </ul>
-              </div>
-            </li>
-          </ul>
+      {status === 'failed' && (
+        <div>
+          Error:
+          {' '}
+          {error}
         </div>
-      ))}
+      )}
+
+      {!Array.isArray(books) || books.length === 0 ? (
+        <div>No books found.</div>
+      ) : (
+        books.map((book, index) => (
+          <BookItem
+            // eslint-disable-next-line react/no-array-index-key
+            key={`${book.id}-${index}`}
+            book={book}
+            onRemoveBook={handleRemoveBook}
+            onSelectCategory={handleSelectCategory}
+            selectedCategory={selectedCategory}
+          />
+        ))
+      )}
+
       <AddBook onAddBook={handleAddBook} />
     </div>
   );

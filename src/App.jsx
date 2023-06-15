@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import Navbar from './components/Navbar/Navbar';
