@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PersonIcon from '@mui/icons-material/Person';
 import './Navbar.scss';
 
 const Navbar = () => (
@@ -15,7 +16,9 @@ const Navbar = () => (
         <Link to="/categories">Categories</Link>
       </li>
     </ul>
-    <div className="profile" />
+    <div className="profile">
+      <PersonIcon className="person" />
+    </div>
   </nav>
 );
 

@@ -12,6 +12,7 @@ nav {
   padding: 1.438rem 6.188rem 1.688rem 6.25rem;
   background-color: #fff;
   box-shadow: 0 0 5px 0 #d1d1d1;
+  z-index: 20;
 
   .logo {
     width: 15rem;
@@ -31,6 +32,7 @@ nav {
     padding-top: 0.27rem;
     letter-spacing: 1.9px;
     color: #121212;
+    text-transform: uppercase;
 
     li {
       opacity: 0.5;
@@ -42,10 +44,18 @@ nav {
   }
 
   .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 2.813rem;
     height: 2.813rem;
     border-radius: 50%;
     border: solid 1px #e8e8e8;
+
+    .person {
+      font-size: 1.465rem;
+      color: #0290ff;
+    }
   }
 }
 

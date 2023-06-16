@@ -5,7 +5,7 @@ const AddBook = ({ onAddBook }) => {
   const [inputValue, setInputValue] = useState('');
   const [selectedAuthor, setSelectedAuthor] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const categories = ['Thriller', 'Mystery', 'Detective', 'Neo-Noir', 'Science Fiction', 'Fiction', 'Nonfiction'];
+  const categories = ['Action', 'Economy', 'Science Fiction'];
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -47,13 +47,15 @@ const AddBook = ({ onAddBook }) => {
           onChange={handleInputChange}
           placeholder="Book title"
         />
-        <select value={selectedAuthor} onChange={handleAuthorChange}>
-          <option value="">Select an author</option>
-          <option value="John Doe">John Doe</option>
-          <option value="John Noakes">John Noakes</option>
-          <option value="Richard Miles">Richard Miles</option>
-          <option value="Mary Major">Mary Major</option>
-        </select>
+        <div className="select-wrapper">
+          <select value={selectedAuthor} onChange={handleAuthorChange}>
+            <option value="">Author</option>
+            <option value="Frank Herbert">Frank Herbert</option>
+            <option value="Suzanne Collins">Suzanne Collins</option>
+            <option value="Richard Miles">Richard Miles</option>
+            <option value="Mary Major">Mary Major</option>
+          </select>
+        </div>
         <button type="submit" disabled={isLoading}>
           {isLoading ? 'Adding...' : 'Add Book'}
         </button>

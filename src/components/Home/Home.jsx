@@ -84,6 +84,8 @@ const Home = () => {
         ))
       )}
 
+      <div className="grey-line" />
+
       <AddBook onAddBook={handleAddBook} />
     </div>
   );
