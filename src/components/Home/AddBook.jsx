@@ -25,7 +25,7 @@ const AddBook = ({ onAddBook }) => {
         author: selectedAuthor,
       };
 
-      setIsLoading(true); // Start loading
+      setIsLoading(true);
 
       try {
         await onAddBook(newBook);
