@@ -58,7 +58,7 @@ const booksSlice = createSlice({
   },
 });
 
-export const { selectCategory, removeBookItem } = booksSlice.actions;
+export const { selectCategory } = booksSlice.actions;
 export default booksSlice.reducer;
 export const fetchBooks = fetchBooksData;
 export const addBook = addBookData;
