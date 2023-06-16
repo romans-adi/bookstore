@@ -47,9 +47,14 @@ The Bookstore project is a website that allows users to view, add, and remove bo
 
 ### Key Features <a name="key-features"></a>
 
-- [x] Reusable Components
-- [x] Client-side routing
-- [x] Redux Toolkit
+- [x] Reusable Components: The project utilizes reusable components to maintain a modular and efficient code structure.
+- [x] Client-side Routing: It implements client-side routing to enable seamless navigation between different sections of the website without page refresh.
+- [x] Redux Toolkit: Redux Toolkit is used for state management, providing a centralized store and enabling predictable state updates.
+- [x] Book Listing: The website allows users to view a list of books with their title, author, and category information.
+- [x] Add Book: Users can add new books to the list by providing the title and author details.
+- [x] Remove Book: The project allows users to remove books from the list, providing a smooth book removal experience.
+- [x] Category Filtering: Users can filter the book list based on categories. Clicking on a category will display only the books belonging to that category. Clicking again on the same category will revert the filtering and show all books again.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -57,8 +62,9 @@ The Bookstore project is a website that allows users to view, add, and remove bo
 
 ### Future Features <a name="future-features"></a>
 
-- [ ] Implement API calls
-- [ ] Enhance the visual appeal and user experience
+- [ ] Enhance the visual appeal and user experience. Optimize the website for different screen sizes and devices, ensuring a seamless experience across desktop, tablet, and mobile platforms.
+- [ ] Enhanced Category Selection: Upgrade the category selection ability to provide a more intuitive and user-friendly experience. Implement a dropdown of available categories for users to choose from, ensuring consistent and accurate filtering.
+- [ ] Advanced Search Functionality: Introduce an advanced search feature that enables users to search for books based on various criteria such as title, author, or category. Provide search suggestions and real-time filtering to enhance the search experience.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

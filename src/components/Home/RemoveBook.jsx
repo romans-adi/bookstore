@@ -1,10 +1,13 @@
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { removeBook } from '../../redux/books/booksSlice';
 
-const RemoveBook = ({ itemId, onRemoveBook }) => {
+const RemoveBook = ({ itemId }) => {
+  const dispatch = useDispatch();
+
   const handleRemove = () => {
-    onRemoveBook(itemId);
+    dispatch(removeBook(itemId));
   };
 
   return (
@@ -13,7 +16,6 @@ const RemoveBook = ({ itemId, onRemoveBook }) => {
 };
 
 RemoveBook.propTypes = {
-  onRemoveBook: PropTypes.func.isRequired,
   itemId: PropTypes.string.isRequired,
 };
 
