@@ -56,6 +56,11 @@ const Home = () => {
     );
   }
 
+  let filteredBooks = books;
+  if (selectedCategory) {
+    filteredBooks = books.filter((book) => book.category === selectedCategory);
+  }
+
   return (
     <div id="home">
       {status === 'failed' && (
@@ -66,17 +71,15 @@ const Home = () => {
         </div>
       )}
 
-      {!Array.isArray(books) || books.length === 0 ? (
+      {!Array.isArray(filteredBooks) || filteredBooks.length === 0 ? (
         <div>No books found.</div>
       ) : (
-        books.map((book, index) => (
+        filteredBooks.map((book) => (
           <BookItem
-            // eslint-disable-next-line react/no-array-index-key
-            key={`${book.id}-${index}`}
+            key={book.id}
             book={book}
             onRemoveBook={handleRemoveBook}
             onSelectCategory={handleSelectCategory}
-            selectedCategory={selectedCategory}
           />
         ))
       )}

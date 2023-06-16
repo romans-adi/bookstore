@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import RemoveBook from './RemoveBook';
 
-const BookItem = ({ book, onSelectCategory, onRemoveBook }) => {
+const BookItem = ({ book, onRemoveBook, onSelectCategory }) => {
   const {
     id, title, author, category,
   } = book;
 
-  const handleSelectCategory = (category) => {
+  const handleSelectCategory = () => {
     onSelectCategory(category);
   };
 
@@ -16,9 +17,9 @@ const BookItem = ({ book, onSelectCategory, onRemoveBook }) => {
         <button
           type="button"
           className="book-category"
-          onClick={() => handleSelectCategory(category)}
+          onClick={handleSelectCategory}
         >
-          {book.category}
+          {category}
         </button>
         <li className="book-title">{title}</li>
         <li className="book-author">{author}</li>
@@ -36,6 +37,16 @@ const BookItem = ({ book, onSelectCategory, onRemoveBook }) => {
       </ul>
     </div>
   );
+};
+BookItem.propTypes = {
+  book: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+  }).isRequired,
+  onRemoveBook: PropTypes.func.isRequired,
+  onSelectCategory: PropTypes.func.isRequired,
 };
 
 export default BookItem;

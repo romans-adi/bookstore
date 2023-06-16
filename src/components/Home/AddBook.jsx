@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const AddBook = ({ onAddBook }) => {
   const [inputValue, setInputValue] = useState('');
@@ -30,11 +31,8 @@ const AddBook = ({ onAddBook }) => {
         await onAddBook(newBook);
         setInputValue('');
         setSelectedAuthor('');
-      } catch (error) {
-        // Handle error if necessary
-        console.log(error);
       } finally {
-        setIsLoading(false); // Stop loading
+        setIsLoading(false);
       }
     }
   };
@@ -62,6 +60,10 @@ const AddBook = ({ onAddBook }) => {
       </form>
     </div>
   );
+};
+
+AddBook.propTypes = {
+  onAddBook: PropTypes.func.isRequired,
 };
 
 export default AddBook;
