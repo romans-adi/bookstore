@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { PacmanLoader } from 'react-spinners';
 import { v4 as uuidv4 } from 'uuid';
-import AddBook from './AddBook';
-import BookItem from './BookItem';
+import AddBook from './AddBook/AddBook';
+import BookItem from './BookItem/BookItem';
 import {
   selectCategory,
   fetchBooks,
@@ -64,11 +64,11 @@ const Home = () => {
   return (
     <div id="home">
       {status === 'failed' && (
-        <div>
-          Error:
-          {' '}
-          {error}
-        </div>
+      <div>
+        Error:
+        {' '}
+        {error}
+      </div>
       )}
 
       {!Array.isArray(filteredBooks) || filteredBooks.length === 0 ? (
@@ -80,9 +80,12 @@ const Home = () => {
             book={book}
             onRemoveBook={handleRemoveBook}
             onSelectCategory={handleSelectCategory}
+            progressPercentage={64}
           />
         ))
       )}
+
+      <div className="grey-line" />
 
       <AddBook onAddBook={handleAddBook} />
     </div>

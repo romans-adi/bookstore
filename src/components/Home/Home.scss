@@ -5,15 +5,101 @@
   flex-direction: column;
   align-items: center;
   width: 90%;
+  padding: 2.313rem 0 16.563rem 0;
 
   .book-card {
+    display: flex;
+    align-items: center;
     flex: 1;
     background-color: #fff;
     width: 100%;
     margin: 10px 0;
     padding: 20px;
+    gap: 20px;
     border: 1px solid #e8e8e8;
     border-radius: 4px;
+  }
+
+  .left-column {
+    flex: 1;
+  }
+
+  .central-column {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-right: 9rem;
+  }
+
+  .vertical-line {
+    width: 0.125rem;
+    height: 4.375rem;
+    margin: 1.125rem 3.688rem 0 4.938rem;
+    border: solid 1px #e8e8e8;
+  }
+
+  .current-chapter-column {
+    width: 13.25rem;
+    font-family: 'Roboto Slab', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .current-chapter-label {
+    color: #121212;
+    opacity: 0.5;
+    font-size: 0.813rem;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  .current-chapter {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 0.438rem;
+    font-size: 1rem;
+    letter-spacing: -0.4px;
+    font-weight: 300;
+  }
+
+  .current-chapter-content {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .update-progress-button {
+    background-color: #0290ff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 0.5rem 1.2rem;
+    margin-top: 1.438rem;
+    letter-spacing: 0.5px;
+    font-family: 'RobotoSlab', serif;
+    text-transform: uppercase;
+    font-size: 0.813rem;
+    font-weight: 300;
+
+    &:hover {
+      background-color: #326f9c;
+    }
   }
 
   .book-category {
@@ -86,100 +172,74 @@
   }
 }
 
-.add-book {
-  font-family: 'Montserrat', sans-serif;
-  flex: 1;
+.grey-line {
   width: 100%;
-  align-items: center;
-  justify-content: center;
+  height: 0.125rem;
+  margin: 2.5rem 0.063rem 1.813rem 0;
+  border: solid 1px #e8e8e8;
+}
 
-  .add-book-heading {
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #888;
-    font-size: 1.25rem;
-    text-transform: uppercase;
-  }
-
-  form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-content: center;
-  }
-
-  input[type="text"] {
-    flex: 1;
-    height: 3rem;
-    font-size: 1rem;
-    color: #c4c4c4;
-    width: 70%;
-    border: 2px solid #e8e8e8;
-    border-radius: 8px;
-    padding: 8px;
-    margin-right: 10px;
-
-    &::placeholder {
-      padding: 0.3rem 0.1rem;
+@media (max-width: 1024px) {
+  #home {
+    .current-chapter-column {
+      align-items: flex-start;
     }
 
-    &:focus {
-      color: #000;
-      border: 2px solid #0290ff;
-      outline: none;
+    .vertical-line {
+      margin: 1rem;
     }
-  }
 
-  select {
-    background-color: #fff;
-    color: #c4c4c4;
-    min-width: 10%;
-    border: 2px solid #e8e8e8;
-    border-radius: 8px;
-    padding: 8px;
-    margin-right: 10px;
-
-    &:focus {
-      color: #000;
-      border: 2px solid #0290ff;
-      outline: none;
-    }
-  }
-
-  button[type="submit"] {
-    font-family: 'RobotoSlab', serif;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #0290ff;
-    font-weight: bold;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-
-    &:hover {
-      filter: contrast(1.5);
-      cursor: pointer;
+    .right-column {
+      padding-right: 1rem;
     }
   }
 }
 
 @media (max-width: 768px) {
   #home {
-    .add-book {
-      .add-book-heading {
-        text-align: center;
-      }
+    padding: 2rem;
 
-      form {
-        flex-direction: column;
+    .book-card {
+      flex-direction: column;
+      gap: 2rem;
+      justify-content: center;
+      align-items: flex-start;
+    }
 
-        input,
-        select {
-          margin-right: 0;
+    .vertical-line {
+      display: none;
+    }
+
+    .left-column,
+    .central-column,
+    .right-column {
+      flex-basis: 100%;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  #home li {
+    .actions {
+      padding: 10px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      li,
+      > button {
+        padding: 2px 0;
+        margin: 0;
+
+        &:first-of-type {
+          margin: 0;
         }
       }
     }
+  }
+
+  .current-chapter-column {
+    max-width: 10rem;
+    width: auto;
   }
 }
