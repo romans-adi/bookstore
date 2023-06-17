@@ -45,13 +45,15 @@ const BookItem = ({ book, onRemoveBook, onSelectCategory }) => {
     <div className="book-card" key={id}>
       <div className="left-column">
         <ul>
-          <button
-            type="button"
-            className="book-category"
-            onClick={handleSelectCategory}
-          >
-            {category}
-          </button>
+          <li>
+            <button
+              type="button"
+              className="book-category"
+              onClick={handleSelectCategory}
+            >
+              {category}
+            </button>
+          </li>
           <li className="book-title">{title}</li>
           <li className="book-author">{author}</li>
           <li>
