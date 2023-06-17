@@ -68,7 +68,9 @@ nav {
     align-items: flex-start;
 
     .profile {
-      display: none;
+      position: fixed;
+      right: 5%;
+      top: 3%;
     }
   }
 }

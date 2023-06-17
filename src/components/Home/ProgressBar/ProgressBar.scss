@@ -1,0 +1,28 @@
+@import '../../../fonts';
+
+.progress {
+  width: 4.25rem;
+}
+
+.progress-column {
+  display: flex;
+  align-items: center;
+
+  .progress-stats {
+    .progress-label {
+      padding-left: 1rem;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Roboto Slab', serif;
+      color: #121212;
+      font-size: 2rem;
+      opacity: 1;
+
+      span {
+        font-family: 'Montserrat', sans-serif;
+        opacity: 0.5;
+        font-size: 0.875rem;
+      }
+    }
+  }
+}

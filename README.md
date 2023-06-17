@@ -27,7 +27,7 @@
 
 # 📖 <a name="about-project">Bookstore</a>
 
-The Bookstore project is a website that allows users to view, add, and remove books from a list. It utilizes React and Redux to provide an interactive user interface and manage the application state.
+The Bookstore project is a website that allows users to manage their book collection. It provides a range of features to enhance the user experience and make book browsing and organization effortless.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -52,8 +52,11 @@ The Bookstore project is a website that allows users to view, add, and remove bo
 - [x] Redux Toolkit: Redux Toolkit is used for state management, providing a centralized store and enabling predictable state updates.
 - [x] Book Listing: The website allows users to view a list of books with their title, author, and category information.
 - [x] Add Book: Users can add new books to the list by providing the title and author details.
-- [x] Remove Book: The project allows users to remove books from the list, providing a smooth book removal experience.
-- [x] Category Filtering: Users can filter the book list based on categories. Clicking on a category will display only the books belonging to that category. Clicking again on the same category will revert the filtering and show all books again.
+- [x] Smooth Book Removal: Users can easily remove books from the list with a smooth removal experience.
+- [x] Category Filtering: Books can be filtered based on categories, allowing users to view specific book sets.
+- [x] Progress and Chapter Display: The progress and current chapter of a book are now visually represented.
+ - [x] Accessibility Enhancements: The website has been made more accessible, ensuring a seamless experience for all users.
+ - [x] Responsive Layout: The project now provides a responsive layout, optimized for different screen sizes and devices.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
