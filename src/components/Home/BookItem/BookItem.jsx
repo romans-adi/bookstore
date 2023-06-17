@@ -81,6 +81,7 @@ const BookItem = ({ book, onRemoveBook, onSelectCategory }) => {
             </div>
           </div>
         </div>
+        <div className="vertical-line" />
       </div>
       <div className="right-column">
         <div className="current-chapter-column">
